@@ -15,9 +15,8 @@
       --danger:#e55353;
       --glass: rgba(255,255,255,0.03);
       --radius:14px;
-      --maxw:520px;
+      --maxw:640px;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -68,9 +67,11 @@
     .field{
       position:relative;
     }
-    input[type="email"], textarea{
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .full{grid-column:1 / -1}
+    input[type="text"], input[type="email"], textarea, select {
       width:100%;
-      padding:14px 14px;
+      padding:12px 14px;
       border-radius:10px;
       border:1px solid rgba(255,255,255,0.04);
       background:var(--glass);
@@ -78,10 +79,9 @@
       font-size:14px;
       outline:none;
       transition: box-shadow 160ms, border-color 160ms, transform 120ms;
-      resize:vertical;
-      min-height:44px;
     }
-    input[type="email"]:focus, textarea:focus{
+    textarea{min-height:120px;resize:vertical}
+    input:focus, textarea:focus, select:focus{
       box-shadow:0 6px 16px rgba(46,164,79,0.08);
       border-color: rgba(46,164,79,0.6);
       transform:translateY(-1px);
@@ -142,11 +142,14 @@
     .success-card h2{margin:0 0 6px 0;font-size:18px}
     .success-card p{margin:0;color:var(--muted);font-size:13px}
 
+    /* file input styling */
+    .file-row{display:flex;gap:12px;align-items:center}
+    .file-name{font-size:13px;color:var(--muted)}
+
     /* Responsive */
-    @media (max-width:520px){
-      body{padding:28px 16px}
+    @media (max-width:720px){
+      .row{grid-template-columns:1fr}
       .card{padding:20px}
-      .logo{width:44px;height:44px}
     }
   </style>
 </head>
@@ -161,24 +164,92 @@
     </div>
     <nav aria-label="Main navigation" style="font-size:13px;color:var(--muted)">
       <a href="index.html" style="color:var(--muted);text-decoration:none;margin-right:12px">Home</a>
-      <a href="download.html" style="color:var(--muted);text-decoration:none">Download</a>
+      <a href="download.html" style="color:var(--muted);text-decoration:none;margin-right:12px">Download</a>
+      <a href="support.html" style="color:var(--muted);text-decoration:none;margin-right:12px">Support</a>
+      <a href="about.html" style="color:var(--muted);text-decoration:none">About</a>
     </nav>
   </header>
 
   <main class="card" role="main" aria-labelledby="support-heading">
     <h1 id="support-heading">Contact Support</h1>
-    <p class="lead">Have a question, crash report, or suggestion? Send us the details and we'll get back to you.</p>
+    <p class="lead">Provide as much detail as possible — screenshots and app info help us diagnose faster.</p>
 
-    <!-- action points to your working Formspree endpoint -->
-    <form id="my-form" action="https://formspree.io/f/mzdvoojb" method="POST" novalidate>
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="_replyto" type="email" placeholder="your@email.com" required autocomplete="email" />
+    <!-- Formspree endpoint: keep your working URL -->
+    <form id="my-form" action="https://formspree.io/f/mzdvoojb" method="POST" enctype="multipart/form-data" novalidate>
+      <!-- Honeypot for bots (leave this input hidden) -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name (optional)" autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="_replyto" type="email" placeholder="you@example.com" required autocomplete="email" />
+        </div>
       </div>
 
-      <div class="field">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" placeholder="Tell us what's happening..." required></textarea>
+      <div class="field full">
+        <label for="subject">Subject / Header</label>
+        <input id="subject" name="subject" type="text" placeholder="Short summary (e.g. Crash on startup)" />
+        <div class="helper">A concise header helps route your issue faster.</div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="type">Type</label>
+          <select id="type" name="type">
+            <option value="Bug" selected>Bug</option>
+            <option value="Feature Request">Feature Request</option>
+            <option value="Question">Question</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="severity">Severity</label>
+          <select id="severity" name="severity">
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="os">Operating system</label>
+          <select id="os" name="os">
+            <option>Windows</option>
+            <option>macOS</option>
+            <option>Linux</option>
+            <option>Android</option>
+            <option>iOS</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="version">App version</label>
+          <input id="version" name="version" type="text" placeholder="e.g. 1.2.3" />
+        </div>
+      </div>
+
+      <div class="field full">
+        <label for="message">Message / Steps to reproduce</label>
+        <textarea id="message" name="message" rows="6" placeholder="Steps to reproduce, expected vs actual behavior, logs..." required></textarea>
+      </div>
+
+      <div class="field full">
+        <label for="attachment">Attach screenshot (optional)</label>
+        <div class="file-row">
+          <input id="attachment" type="file" name="attachment" accept="image/*" />
+          <div id="file-name" class="file-name helper">No file chosen</div>
+        </div>
+        <div class="helper">Image attachments help a lot. Note: file attachments require Formspree plan support.</div>
       </div>
 
       <div style="display:flex;gap:12px;align-items:center;margin-top:6px">
@@ -218,24 +289,32 @@
     const spinner = document.getElementById('spinner');
     const btnText = document.getElementById('btn-text');
     const successOverlay = document.getElementById('success');
+    const attachment = document.getElementById('attachment');
+    const fileNameEl = document.getElementById('file-name');
 
-    // Helper: show UI state
     function setSending(isSending){
       btn.disabled = isSending;
       spinner.style.display = isSending ? 'inline-block' : 'none';
       btnText.textContent = isSending ? 'Sending...' : 'Send message';
     }
 
-    // show success overlay
     function showSuccess(){
       successOverlay.classList.add('show');
       successOverlay.setAttribute('aria-hidden', 'false');
-      // auto-hide after 4s
       setTimeout(()=> {
         successOverlay.classList.remove('show');
         successOverlay.setAttribute('aria-hidden','true');
       }, 4000);
     }
+
+    // Show selected file name
+    attachment.addEventListener('change', () => {
+      if (attachment.files && attachment.files.length) {
+        fileNameEl.textContent = attachment.files[0].name;
+      } else {
+        fileNameEl.textContent = 'No file chosen';
+      }
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -243,7 +322,19 @@
       statusEl.textContent = '';
       setSending(true);
 
-      // Simple client-side validation
+      // Honeypot check (bots often fill this)
+      const gotcha = form.querySelector('[name="_gotcha"]').value;
+      if (gotcha) {
+        // pretend it worked to the bot, but don't submit
+        setTimeout(()=> {
+          setSending(false);
+          statusEl.classList.add('success');
+          statusEl.textContent = 'Thanks — message sent.';
+        }, 600);
+        return;
+      }
+
+      // Minimal client-side validation
       const email = form.querySelector('[name="_replyto"]').value.trim();
       const message = form.querySelector('[name="message"]').value.trim();
       if (!email || !message){
@@ -259,13 +350,15 @@
         const resp = await fetch(form.action, {
           method: 'POST',
           body: data,
-          headers: { 'Accept': 'application/json' } // request JSON back
+          // Don't set Content-Type — let the browser set the correct multipart/form-data boundary
+          headers: { 'Accept': 'application/json' }
         });
 
         if (resp.ok) {
           statusEl.classList.add('success');
           statusEl.textContent = 'Thanks — message sent.';
           form.reset();
+          fileNameEl.textContent = 'No file chosen';
           showSuccess();
           setSending(false);
           return;
@@ -276,7 +369,6 @@
         try { body = await resp.json(); } catch (err) { body = await resp.text(); }
 
         statusEl.classList.add('error');
-        // a couple of helpful cases
         if (body && typeof body === 'object') {
           if (body.errors && body.errors.length) {
             statusEl.textContent = body.errors.map(x => x.message || JSON.stringify(x)).join('; ');
