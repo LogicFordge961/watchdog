@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About Me — LogicForge</title>
+
+  <meta name="description" content="About LogicForge — creator of WatchDog. Background, skills, projects, and contact." />
+  <meta property="og:title" content="About Me — LogicForge" />
+  <meta property="og:description" content="Creator of WatchDog — building local, privacy-first system tooling." />
+  <meta name="twitter:card" content="summary" />
+
+  <style>
+    :root{
+      --bg:#0b0f13;
+      --card:#0f1316;
+      --muted:#96a0aa;
+      --text:#e6eef6;
+      --accent:#2ea44f;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:960px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(46,164,79,0.04), transparent 8%),
+        linear-gradient(180deg, rgba(255,255,255,0.01), transparent 40%),
+        var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      padding:40px 18px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    .wrap{width:100%;max-width:var(--maxw);display:grid;gap:20px}
+    header{display:flex;justify-content:space-between;align-items:center}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#1b7a3a,#2ea44f);color:white;font-weight:700}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:14px}
+
+    main.card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:26px;
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+      display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start;
+    }
+
+    /* Left column (avatar + contact) */
+    .profile{
+      display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;
+    }
+    .avatar{
+      width:160px;height:160px;border-radius:14px;background:linear-gradient(135deg,#1b7a3a,#2ea44f);
+      display:grid;place-items:center;font-weight:700;font-size:32px;color:white;
+      box-shadow:0 10px 30px rgba(46,164,79,0.08);
+    }
+    .name{font-size:20px;font-weight:700}
+    .role{color:var(--muted);font-size:13px;margin-top:4px}
+
+    .contact{width:100%;background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .contact a{color:var(--text);text-decoration:none;font-weight:700}
+    .contact .muted{color:var(--muted);font-size:13px;margin-top:6px}
+
+    /* Right column (biography, skills, projects) */
+    .bio h2{margin:0 0 8px 0}
+    .bio p{margin:0;color:var(--muted);line-height:1.5}
+
+    .section{margin-top:12px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .chip{background:var(--glass);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted)}
+
+    .projects{display:grid;gap:10px;margin-top:8px}
+    .project{background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .project h4{margin:0 0 6px 0}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+
+    .timeline{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+    .timeline-item{background:var(--card);padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+    .timeline-item small{color:var(--muted)}
+
+    footer{margin-top:12px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+    @media (max-width:920px){
+      main.card{grid-template-columns:1fr;align-items:stretch}
+      .profile{flex-direction:row;gap:12px;align-items:center;text-align:left}
+      .avatar{width:84px;height:84px;font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">WD</div>
+        <div>
+          <div style="font-weight:700">WatchDog</div>
+          <div style="font-size:12px;color:var(--muted)">Creator profile</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="support.html">Support</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="card" role="main" aria-labelledby="profile-heading">
+      <aside class="profile" aria-hidden="false">
+        <div class="avatar" aria-hidden="true">LF</div>
+        <div>
+          <div class="name">LogicForge</div>
+          <div class="role">Software engineer • Systems & tooling</div>
+
+          <div class="contact" style="margin-top:10px">
+            <div><a href="https://github.com/LogicFordge961" target="_blank" rel="noopener">github.com/LogicFordge961</a></div>
+            <div class="muted">Location: (optional) — Timezone: (optional)</div>
+            <div class="muted" style="margin-top:8px">Prefered contact: <a href="support.html">Support form</a> or GitHub issues</div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="bio" aria-labelledby="profile-heading">
+        <h2 id="profile-heading">About me</h2>
+        <p>
+          I build small, reliable system tools that prioritize privacy and predictability. WatchDog began as an experiment in making a local assistant that watches, indexes and safely acts on your machine — without cloud dependencies or surprise behavior. I focus on clean architecture, modular design, and interfaces that are predictable under real-world conditions.
+        </p>
+
+        <div class="section">
+          <h3 style="margin:0">Skills & focus</h3>
+          <div class="chips" aria-hidden="false">
+            <div class="chip">Systems programming</div>
+            <div class="chip">Process monitoring</div>
+            <div class="chip">CLI & tooling</div>
+            <div class="chip">Native Windows tooling</div>
+            <div class="chip">Rust / Go / Node</div>
+            <div class="chip">UX for power users</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3 style="margin:0">Selected projects</h3>
+          <div class="projects">
+            <div class="project">
+              <h4>WatchDog</h4>
+              <p class="muted">Local, privacy-first system assistant — app discovery, crash monitoring, intent-based control. <a href="about.html" style="color:var(--text)">Project page</a> • <a href="https://github.com/LogicFordge961/watchdog" target="_blank" rel="noopener" style="color:var(--text)">Repo</a></p>
+            </div>
+
+            <div class="project">
+              <h4>Tooling & experiments</h4>
+              <p class="muted">Various CLI utilities for managing installs, diagnostics collectors, and small automation scripts used during development and testing.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3 style="margin:0">Timeline</h3>
+          <div class="timeline" aria-hidden="false">
+            <div class="timeline-item">
+              <strong>2025 — WatchDog Stage 2</strong>
+              <div class="muted"><small>Discovery, monitoring, and basic intent control completed.</small></div>
+            </div>
+
+            <div class="timeline-item">
+              <strong>2024 — Prototyping & experiments</strong>
+              <div class="muted"><small>Initial architecture, intent parsing experiments, and Steam integration prototype.</small></div>
+            </div>
+
+            <div class="timeline-item">
+              <strong>Earlier</strong>
+              <div class="muted"><small>CLI tools and systems work that informed WatchDog's design.</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3 style="margin:0">How to reach me</h3>
+          <p class="muted">Best ways: open an issue on the GitHub repo, or use the <a href="support.html" style="color:var(--text)">Support</a> form to send detailed reports or collaboration ideas.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <strong>LogicForge</strong></div>
+      <div style="display:flex;gap:12px">
+        <a href="https://github.com/LogicFordge961" target="_blank" rel="noopener" style="color:var(--muted)">GitHub</a>
+        <a href="mailto:your-email@example.com" style="color:var(--muted)">Email</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
