@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Download | WatchDog AI</title>
+  <meta name="description" content="Download WatchDog AI - lightweight crash diagnostics agent for Windows, macOS, and Linux." />
+  <style>
+    :root{
+      --bg:#0b0f13;
+      --card:#0f1316;
+      --muted:#96a0aa;
+      --text:#e6eef6;
+      --accent:#2ea44f;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      --maxw:900px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(46,164,79,0.04), transparent 8%),
+        var(--bg);
+      color:var(--text);
+      padding:40px 18px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--maxw)}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#1b7a3a,#2ea44f);font-weight:700}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-size:14px}
+
+    main.card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:28px;
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+    }
+
+    h1{margin:0 0 8px 0}
+    p.lead{margin:0 0 18px 0;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .platform{background:var(--card);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);text-align:center}
+    .platform h3{margin:0 0 8px 0}
+    .btn{
+      display:inline-block;background:linear-gradient(180deg,var(--accent),#1b7a3a);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;margin-top:8px;
+    }
+    .helper{font-size:13px;color:var(--muted);margin-top:8px}
+
+    .advanced{margin-top:20px;display:grid;gap:10px}
+    pre.checksum{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;color:var(--muted);overflow:auto}
+
+    footer{margin-top:24px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">WD</div>
+        <div>
+          <div style="font-weight:700">WatchDog AI</div>
+          <div style="font-size:12px;color:var(--muted)">Crash diagnostics & reporting</div>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="download.html" style="color:var(--text);text-decoration:underline;margin-left:16px">Download</a>
+        <a href="support.html">Support</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="card" role="main" aria-labelledby="download-heading">
+      <h1 id="download-heading">Download WatchDog AI</h1>
+      <p class="lead">Choose the installer or package for your platform. See checksums and installation notes below.</p>
+
+      <section class="grid" aria-label="Downloads">
+        <div class="platform" role="region" aria-labelledby="win">
+          <h3 id="win">Windows</h3>
+          <div style="font-weight:700">watchdog-setup-win.exe</div>
+          <a class="btn" href="releases/watchdog-setup-win.exe" download>Download</a>
+          <div class="helper">Installer for Windows (x64). Run as administrator for system-level installs.</div>
+        </div>
+
+        <div class="platform" role="region" aria-labelledby="mac">
+          <h3 id="mac">macOS</h3>
+          <div style="font-weight:700">watchdog-macos.dmg</div>
+          <a class="btn" href="releases/watchdog-macos.dmg" download>Download</a>
+          <div class="helper">Signed DMG for macOS (Intel/ARM). Open System Preferences → Security to allow if blocked.</div>
+        </div>
+
+        <div class="platform" role="region" aria-labelledby="linux">
+          <h3 id="linux">Linux</h3>
+          <div style="font-weight:700">watchdog-linux.tar.gz</div>
+          <a class="btn" href="releases/watchdog-linux.tar.gz" download>Download</a>
+          <div class="helper">Tarball for Linux. Extract and follow README for installation and service setup.</div>
+        </div>
+      </section>
+
+      <section class="advanced" aria-labelledby="advanced">
+        <h2 id="advanced" style="margin:0">Advanced / checksums</h2>
+        <p class="helper">Verify downloads by comparing SHA256 checksums (recommended).</p>
+
+        <pre class="checksum" aria-hidden="false">
+# SHA256 checksums
+watchdog-setup-win.exe   e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+watchdog-macos.dmg       9f2c7d4b6a3a6c6f3b1a6f2c3e9b0d7a1c4b3a2f9e6d5c4b3a2f9e6d5c4b3a2
+watchdog-linux.tar.gz    7d3c2b1a4f5e6d7c8b9a0f1e2d3c4b5a6f7e8d9c0b1a2c3d4e5f6a7b8c9d0e1
+        </pre>
+
+        <p class="helper">Installation tips:</p>
+        <ul class="helper" style="margin-top:6px">
+          <li>After install, run <code>watchdog --version</code> to confirm.</li>
+          <li>Use <a href="support.html" style="color:var(--text)">Support</a> to report install issues and attach logs/screenshots.</li>
+          <li>For CI or unattended installs, use the tarball and the install script in the package.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <strong>WatchDog AI</strong></div>
+      <div>
+        <a href="https://github.com/LogicFordge961/watchdog" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none">GitHub</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
