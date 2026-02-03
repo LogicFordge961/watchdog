@@ -2,90 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support</title>
+    <title>Support | WatchDog AI</title>
     <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; /* Ensures padding doesn't affect width */
-        }
-        button {
-            background-color: #5cb85c;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #4cae4c;
-        }
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #666;
-        }
+        body { background-color: #0d1117; color: #c9d1d9; font-family: sans-serif; text-align: center; padding: 50px; }
+        h1 { color: #58a6ff; }
+        .container { background: #161b22; padding: 30px; border-radius: 8px; display: inline-block; text-align: left; border: 1px solid #30363d; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        input, textarea { width: 300px; padding: 12px; margin-top: 10px; background: #0d1117; border: 1px solid #30363d; color: white; border-radius: 6px; }
+        .btn { background: #238636; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; margin-top: 20px; width: 100%; font-weight: bold; font-size: 1rem; }
+        .btn:hover { background: #2ea043; }
+        nav { margin-bottom: 40px; }
+        nav a { color: #8b949e; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #58a6ff; }
     </style>
 </head>
 <body>
-
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="support.html">Support</a>
+    </nav>
     <div class="container">
         <h1>Contact Support</h1>
-        <p>Please fill out the form below to get in touch with us.</p>
-
-        <form action="#" method="post"> <!-- Replace # with your form handling endpoint -->
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject">
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="6" required></textarea>
-
-            <button type="submit">Submit</button>
+        <p>Send a message to <strong>LogicForge</strong></p>
+        <form action="https://formspree.io" method="POST">
+            <label>Your Email:</label><br>
+            <input type="email" name="email" placeholder="you@example.com" required><br><br>
+            <label>Message:</label><br>
+            <textarea name="message" rows="5" placeholder="How can I help with WatchDog?" required></textarea><br>
+            <button type="submit" class="btn">Send to LogicForge</button>
         </form>
     </div>
-
-    <footer>
-        &copy; 2024 Your Website. All rights reserved.
-    </footer>
-
 </body>
 </html>
