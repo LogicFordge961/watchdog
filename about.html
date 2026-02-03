@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WatchDog AI — Overview</title>
+
+  <!-- Basic SEO / Social -->
+  <meta name="description" content="WatchDog AI monitors apps and surfaces crashes, errors, and anomalous behavior. Lightweight agent, privacy-first, built for developers and QA teams." />
+  <meta property="og:title" content="WatchDog AI" />
+  <meta property="og:description" content="Monitor apps, collect useful diagnostics, and get actionable reports — fast." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      --bg:#0b0f13;
+      --card:#0f1316;
+      --muted:#96a0aa;
+      --text:#e6eef6;
+      --accent:#2ea44f;
+      --accent-2:#1b7a3a;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(46,164,79,0.04), transparent 8%),
+        linear-gradient(180deg, rgba(255,255,255,0.01), transparent 40%),
+        var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      padding:40px 18px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    .site {
+      width:100%;
+      max-width:var(--maxw);
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:28px;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
+
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:48px;height:48px;border-radius:10px;
+      display:grid;place-items:center;background:linear-gradient(135deg,var(--accent-2),var(--accent));
+      color:white;font-weight:700;font-size:18px;
+      box-shadow:0 6px 18px rgba(46,164,79,0.06);
+    }
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}
+
+    main.hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent 30%);
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:28px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:20px;
+      align-items:center;
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+    }
+
+    .hero .kicker{color:var(--muted);text-transform:uppercase;font-size:12px;margin-bottom:8px}
+    .hero h1{margin:0;font-size:28px}
+    .hero p.lead{margin:12px 0;color:var(--muted);font-size:15px;line-height:1.5}
+    .cta-row{display:flex;gap:12px;margin-top:12px}
+    .btn{
+      background:linear-gradient(180deg,var(--accent),var(--accent-2));
+      color:white;padding:12px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700;
+      text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+    }
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+
+    .hero-aside{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);
+      min-height:220px;display:flex;flex-direction:column;justify-content:center;
+    }
+    .stat{font-size:20px;font-weight:700}
+    .stat-label{font-size:13px;color:var(--muted)}
+
+    /* Features */
+    .features {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+    }
+    .card h3{margin:0 0 8px 0}
+    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+
+    /* How it works */
+    .how{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;
+    }
+    .steps{display:flex;flex-direction:column;gap:14px}
+    .step{display:flex;gap:12px;align-items:flex-start}
+    .step .num{width:36px;height:36px;border-radius:9px;background:var(--glass);display:grid;place-items:center;font-weight:700}
+    .step p{margin:0;color:var(--muted)}
+
+    /* quickstart */
+    .quick{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent 30%);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .quick ol{margin:8px 0 0 18px;color:var(--muted)}
+
+    /* FAQ */
+    .faq{display:grid;gap:10px}
+    .faq-item{background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .faq-item h4{margin:0 0 6px 0}
+
+    footer{display:flex;justify-content:space-between;align-items:center;padding:8px 6px;color:var(--muted);font-size:13px}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr 1fr}
+      .how{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .features{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="brand">
+        <div class="logo">WD</div>
+        <div>
+          <div style="font-weight:700">WatchDog AI</div>
+          <div style="font-size:12px;color:var(--muted)">Crash reporting · Diagnostics · Alerts</div>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="support.html">Support</a>
+        <a href="https://github.com/LogicFordge961/watchdog" target="_blank" rel="noopener" style="margin-left:12px">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="hero" role="main" aria-labelledby="hero-heading">
+      <div>
+        <div class="kicker">Lightweight monitoring</div>
+        <h1 id="hero-heading">WatchDog AI — fast, privacy-first crash diagnostics for your app</h1>
+        <p class="lead">WatchDog AI collects meaningful diagnostics, groups similar crashes, and surfaces the most actionable signals so you can fix issues faster and ship with confidence.</p>
+
+        <div class="cta-row">
+          <a class="btn" href="download.html">Download</a>
+          <a class="btn ghost" href="support.html">Contact Support</a>
+          <a class="btn ghost" href="https://github.com/LogicFordge961/watchdog" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+
+        <section style="margin-top:18px">
+          <h4 style="margin:0 0 8px 0">Why teams pick WatchDog</h4>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <div style="background:var(--glass);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted)">Low overhead</div>
+            <div style="background:var(--glass);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted)">Privacy-first</div>
+            <div style="background:var(--glass);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted)">Group by root cause</div>
+            <div style="background:var(--glass);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted)">Integrations: Slack / GitHub</div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="hero-aside" aria-hidden="false">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div>
+            <div class="stat">Instant insights</div>
+            <div class="stat-label">Errors grouped automatically</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:13px;color:var(--muted)">Agent size</div>
+            <div style="font-weight:700">~120KB</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px">
+          <div style="flex:1">
+            <div style="font-size:13px;color:var(--muted)">Latest release</div>
+            <div style="font-weight:700">v1.2.3</div>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:13px;color:var(--muted)">Support</div>
+            <div style="font-weight:700"><a href="support.html" style="color:var(--text);text-decoration:none">support</a></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <section>
+      <h2 style="margin:0 0 12px 0">Core features</h2>
+      <div class="features">
+        <div class="card">
+          <h3>Crash grouping</h3>
+          <p>Automatically groups similar errors by stack trace and context so you can prioritize the root cause instead of duplicated noise.</p>
+        </div>
+
+        <div class="card">
+          <h3>Helpful diagnostics</h3>
+          <p>Collects environment, logs, breadcrumbs, and minimum reproduction details to accelerate triage and debugging.</p>
+        </div>
+
+        <div class="card">
+          <h3>Privacy-first</h3>
+          <p>Sanitization hooks and opt-in attachments let you control which data is collected and shared with support teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" style="margin-top:18px">
+      <div>
+        <h2 style="margin-top:0">How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <strong>Install the lightweight agent</strong>
+              <p>Drop the small WatchDog runtime into your app; it has minimal memory and performance impact.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <strong>Capture events & context</strong>
+              <p>On crashes, WatchDog collects a compact diagnostic bundle (stack, app state, breadcrumbs).</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <strong>Get actionable reports</strong>
+              <p>Reports are grouped, prioritized, and can be forwarded to Slack, GitHub, or email for fast resolution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
+          <h3 style="margin-top:0">Quick start</h3>
+          <div class="quick">
+            <ol>
+              <li>Download the agent from the <a href="download.html" style="color:var(--text)">Download</a> page.</li>
+              <li>Drop it into your app and call <code>WatchDog.init()</code> with your key.</li>
+              <li>Reproduce an issue and check the <a href="support.html" style="color:var(--text)">Support</a> inbox or dashboard for reports.</li>
+            </ol>
+            <div style="margin-top:12px;font-size:13px;color:var(--muted)">Need help? Submit a detailed report on <a href="support.html" style="color:var(--text)">Support</a> and attach logs/screenshots.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:18px">
+      <h2 style="margin:0 0 12px 0">Frequently asked</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Is WatchDog safe to use in production?</h4>
+          <p>Yes — it's designed for production use. You can enable sampling and configure what data is collected to meet your privacy needs.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>Does it upload user data by default?</h4>
+          <p>No sensitive user data is uploaded by default. Hooks let you sanitize or remove fields before a report is sent.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4>What platforms are supported?</h4>
+          <p>Windows, macOS, and Linux are supported today. Mobile and embedded platforms are planned — check the roadmap on GitHub.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <strong>WatchDog AI</strong> — Built by LogicForge</div>
+      <div style="display:flex;gap:10px">
+        <a href="https://github.com/LogicFordge961/watchdog" target="_blank" rel="noopener" style="color:var(--muted)">GitHub</a>
+        <a href="download.html" style="color:var(--muted)">Download</a>
+        <a href="support.html" style="color:var(--muted)">Support</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
