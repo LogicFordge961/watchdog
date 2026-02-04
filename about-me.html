@@ -3,12 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About Me — LogicForge</title>
+  <title>About Me — (Your name)</title>
 
-  <meta name="description" content="About LogicForge — creator of WatchDog. Background, skills, projects, and contact." />
-  <meta property="og:title" content="About Me — LogicForge" />
-  <meta property="og:description" content="Creator of WatchDog — building local, privacy-first system tooling." />
-  <meta name="twitter:card" content="summary" />
+  <meta name="description" content="About the project author" />
+  <meta name="robots" content="noindex" />
 
   <style>
     :root{
@@ -21,7 +19,7 @@
       --radius:14px;
       --maxw:960px;
 
-      /* easy-to-adjust typography */
+      /* Easy edit: change these to adjust typography quickly */
       --heading-size:20px;
       --lead-size:15px;
       --body-size:14px;
@@ -30,7 +28,7 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background:
         radial-gradient(800px 400px at 10% 10%, rgba(46,164,79,0.04), transparent 8%),
         linear-gradient(180deg, rgba(255,255,255,0.01), transparent 40%),
@@ -59,7 +57,6 @@
       display:grid;grid-template-columns:320px 1fr;gap:18px;align-items:start;
     }
 
-    /* Left column (avatar + contact) */
     .profile{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
     .avatar{width:160px;height:160px;border-radius:14px;background:linear-gradient(135deg,#1b7a3a,#2ea44f);display:grid;place-items:center;font-weight:700;font-size:32px;color:white;box-shadow:0 10px 30px rgba(46,164,79,0.08)}
     .name{font-size:20px;font-weight:700}
@@ -68,7 +65,6 @@
     .contact a{color:var(--text);text-decoration:none;font-weight:700}
     .contact .muted{color:var(--muted);font-size:13px;margin-top:6px}
 
-    /* Right column (content) */
     .content h1{margin:0 0 8px 0;font-size:var(--heading-size)}
     .lead{margin:0 0 12px 0;color:var(--muted);font-size:var(--lead-size);line-height:1.5}
     .section{margin-top:12px}
@@ -79,9 +75,9 @@
     .feature h4{margin:0 0 6px 0}
     footer{margin-top:12px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
 
-    /* small helper to make editing content inline easier */
-    .editable{outline:2px dashed transparent;padding:2px;border-radius:4px}
-    .editable:focus{outline-color:rgba(46,164,79,0.15)}
+    /* Visual cue for placeholders to edit */
+    .placeholder{border:2px dashed rgba(255,255,255,0.03);padding:8px;border-radius:6px}
+    .hint{color:var(--muted);font-size:13px;margin-top:6px}
 
     @media (max-width:920px){
       main.card{grid-template-columns:1fr;align-items:stretch}
@@ -98,11 +94,11 @@
         <div class="logo">WD</div>
         <div>
           <div style="font-weight:700">WatchDog</div>
-          <div style="font-size:12px;color:var(--muted)">Creator profile</div>
+          <div style="font-size:12px;color:var(--muted)">Creator profile (temporary)</div>
         </div>
       </div>
 
-      <!-- Nav: put this in other pages to match (Home / Download / Support / About / About Me) -->
+      <!-- Navigation: replace/insert this into other pages as needed -->
       <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="download.html">Download</a>
@@ -114,171 +110,78 @@
 
     <main class="card" role="main" aria-labelledby="aboutme-heading">
       <aside class="profile" aria-hidden="false">
-        <div class="avatar" aria-hidden="true">LF</div>
+        <!-- EDIT: replace the avatar DIV with an <img> if you have a picture (see comments below) -->
+        <div class="avatar" id="avatar-placeholder">Initials</div>
+
+        <!-- EDIT: fill these fields -->
         <div>
-          <div class="name">LogicForge</div>
-          <div class="role">Creator of WatchDog — Systems & Tooling</div>
+          <div class="name placeholder" id="name-placeholder">[Your name here]</div>
+          <div class="role placeholder" id="role-placeholder">[Your role / short description]</div>
 
           <div class="contact" style="margin-top:10px">
-            <div><a href="https://github.com/LogicFordge961" target="_blank" rel="noopener">github.com/LogicFordge961</a></div>
-            <div class="muted">Preferred contact: <a href="support.html">Support form</a> or GitHub issues</div>
+            <div class="placeholder" id="contact-placeholder">[Links / contact — e.g. GitHub URL]</div>
+            <div class="hint">Tip: replace placeholder text with your links or email.</div>
           </div>
         </div>
       </aside>
 
-      <!--
-        Main content below.
-        To edit the text easily, replace the innerHTML of the elements with IDs:
-        - #title (headline)
-        - #lead (short intro)
-        - #sections (the long body; structured as subsections)
-      -->
       <section class="content">
-        <h1 id="aboutme-heading">About WatchDog — a system that understands you</h1>
+        <!-- EDIT: main title and short intro -->
+        <h1 id="aboutme-heading">[Headline — e.g. Creator of WatchDog]</h1>
+        <p id="lead" class="lead placeholder">[Short intro paragraph — 1–2 sentences]</p>
 
-        <!-- Short lead paragraph (easy to change) -->
-        <p id="lead" class="lead editable" tabindex="0">
-          WatchDog is a local system intelligence designed to understand how you actually use your computer and quietly make everything work better. It lives on your machine, observes behavior over time, and steps in only when it can genuinely help.
-        </p>
+        <!-- Below: structured sections. Replace the placeholder text blocks. -->
+        <div class="section panel placeholder" id="section-core">
+          <h3>Core message</h3>
+          <p>[One-sentence core message — e.g. "I build local, privacy-preserving system tools."]</p>
+        </div>
 
-        <!-- Sections: each subsection is wrapped and labeled so you can replace text easily -->
-        <div id="sections">
+        <div class="section panel placeholder" id="section-skills">
+          <h3>Skills & focus</h3>
+          <p>[List your main skills or areas of focus]</p>
+        </div>
 
-          <div class="section panel">
-            <h3>Core message</h3>
-            <p class="editable" tabindex="0">
-              It doesn’t replace your operating system. It doesn’t fight your workflow. It learns it.
-            </p>
-          </div>
+        <div class="section panel placeholder" id="section-projects">
+          <h3>Selected projects</h3>
+          <p>[Short bullets or links to top projects — include WatchDog link]</p>
+        </div>
 
-          <div class="section panel">
-            <h3>Complete Awareness of Your Computer</h3>
-            <p class="editable" tabindex="0">
-              WatchDog maintains a living map of your entire system.
-            </p>
-            <p class="editable" tabindex="0">
-              It automatically discovers:
-            </p>
-            <ul class="editable" tabindex="0">
-              <li>All installed applications</li>
-              <li>Portable programs</li>
-              <li>Games, including Steam titles</li>
-              <li>Software across all drives and storage devices</li>
-              <li>Applications installed in non-standard locations</li>
-            </ul>
-            <p class="editable" tabindex="0">
-              Drive letters don’t matter. Folder layouts don’t matter. Even external or secondary drives are handled naturally. If an app exists on your system, WatchDog knows how to find it and how to launch it.
-            </p>
-            <p class="editable" tabindex="0"><strong>Nothing needs to be set up manually.</strong></p>
-          </div>
+        <div class="section panel placeholder" id="section-contact">
+          <h3>How to reach me</h3>
+          <p>[Preferred contact methods: GitHub, email, support form]</p>
+        </div>
 
-          <div class="section panel">
-            <h3>Launch Anything, Naturally</h3>
-            <p class="editable" tabindex="0">
-              You don’t issue commands. You speak normally.
-            </p>
-            <p class="editable" tabindex="0">
-              WatchDog understands intent when you say things like:
-            </p>
-            <ul class="editable" tabindex="0">
-              <li>“Open Minecraft”</li>
-              <li>“Launch my Steam games”</li>
-              <li>“Close everything except Discord”</li>
-              <li>“Start what I usually use for gaming”</li>
-              <li>“Open the app I use for school”</li>
-            </ul>
-            <p class="editable" tabindex="0">
-              It translates natural language into safe system actions without guessing recklessly. If something is ambiguous, WatchDog asks. If something can’t be done, it explains why. The system feels conversational, not scripted.
-            </p>
-          </div>
+        <!-- Optional: timeline or notes -->
+        <div class="section panel placeholder" id="section-notes">
+          <h3>Notes / Timeline</h3>
+          <p>[Optional: short timeline of milestones or releases]</p>
+        </div>
 
-          <div class="section panel">
-            <h3>Deep Game Awareness, Including Steam</h3>
-            <p class="editable" tabindex="0">
-              WatchDog treats games as first-class applications. It detects Steam installations across all drives and understands how each game launches. You can open games directly through WatchDog without opening Steam yourself, and it handles everything quietly in the background.
-            </p>
-            <p class="editable" tabindex="0">
-              When games crash, WatchDog notices. When crashes repeat, WatchDog remembers. Over time, it builds stability profiles for individual games and recognizes when something isn’t normal.
-            </p>
-          </div>
-
-          <div class="section panel">
-            <h3>Crash Detection That Learns</h3>
-            <p class="editable" tabindex="0">
-              WatchDog doesn’t just log crashes. It understands them.
-            </p>
-            <p class="editable" tabindex="0">
-              It distinguishes between normal app closures, freezes, hard crashes, and repeated failures. It observes what was running, what usually runs alongside it, and whether the crash follows a pattern. This allows WatchDog to provide meaningful insights instead of vague error messages. If a problem keeps happening, WatchDog doesn’t panic—it explains.
-            </p>
-          </div>
-
-          <div class="section panel">
-            <h3>Behavioral Pattern Recognition</h3>
-            <p class="editable" tabindex="0">
-              WatchDog quietly learns how you use your system. It notices habits such as apps you open together, programs you use at specific times of day, games you play regularly, and software you always close before starting something else.
-            </p>
-            <p class="editable" tabindex="0">
-              From this, WatchDog begins offering helpful suggestions — optional, clear, and respectful — like:
-            </p>
-            <ul class="editable" tabindex="0">
-              <li>“You usually play Minecraft around this time. Would you like me to launch it automatically?”</li>
-              <li>“This game tends to crash after long sessions. Want a warning before it happens again?”</li>
-              <li>“These apps are almost always used together.”</li>
-            </ul>
-            <p class="editable" tabindex="0">
-              WatchDog never takes control without permission.
-            </p>
-          </div>
-
-          <div class="section panel">
-            <h3>Smart Automation Without Intrusion</h3>
-            <p class="editable" tabindex="0">
-              WatchDog automates only what you approve. Every suggestion explains what it will do, why it’s suggesting it, and how to disable it at any time. There are no hidden rules, no forced behaviors, and no surprises.
-            </p>
-          </div>
-
-          <div class="section panel">
-            <h3>Real-Time System Monitoring</h3>
-            <p class="editable" tabindex="0">
-              WatchDog keeps track of running applications, resource pressure, background activity, and system stability over time. This awareness allows it to make decisions based on context, not just commands.
-            </p>
-          </div>
-
-          <div class="section panel">
-            <h3>Private, Local, and Trustworthy</h3>
-            <p class="editable" tabindex="0">
-              WatchDog runs entirely on your machine. There is no cloud dependency, no data uploads, no telemetry, no usage tracking, and no subscriptions. Your system data stays local. Your usage patterns stay private.
-            </p>
-          </div>
-
-          <div class="section panel">
-            <h3>Designed to Be Quietly Reliable</h3>
-            <p class="editable" tabindex="0">
-              WatchDog doesn’t interrupt you. It doesn’t nag. It doesn’t pretend to be human. It waits for the moments where assistance actually matters—and then it helps clearly, calmly, and safely.
-            </p>
-            <p class="editable" tabindex="0"><strong>WatchDog is a system that understands your computer the way you do—only with perfect memory and endless patience.</strong></p>
-          </div>
-
-        </div><!-- /#sections -->
+        <p class="hint" style="margin-top:12px">All visible fields are simple HTML — open this file in your editor and replace the placeholder text between the tags. See the top of the file for CSS variables you can change for colors and font sizes.</p>
       </section>
     </main>
 
     <footer>
-      <div>© <strong>LogicForge</strong></div>
+      <div>© <strong>[Your Name]</strong></div>
       <div style="display:flex;gap:12px">
-        <a href="https://github.com/LogicFordge961" target="_blank" rel="noopener" style="color:var(--muted)">GitHub</a>
+        <a href="https://github.com/" style="color:var(--muted)">GitHub</a>
         <a href="support.html" style="color:var(--muted)">Support</a>
       </div>
     </footer>
   </div>
 
-  <!-- Small helper: double-click any .editable block to select it for easy copy/paste editing in your editor -->
+  <!-- Quick instructions for use (not needed in production) -->
   <script>
-    // Make editable blocks lightly interactive for in-browser preview (not saved server-side).
-    // This makes it convenient to preview small wording tweaks in the browser before editing the file.
-    document.querySelectorAll('.editable').forEach(el => {
+    /* Instructions:
+       - Edit the placeholders by opening this file in your editor.
+       - To use a profile image: replace the #avatar-placeholder element with:
+         <div class="avatar"><img src="assets/avatar.png" alt="Your name" style="width:100%;height:100%;object-fit:cover"></div>
+         and add assets/avatar.png to your repo.
+       - To highlight the current nav item on other pages, add class="active" to the matching <a>.
+    */
+    // Make placeholder blocks selectable when double-clicking (preview convenience)
+    document.querySelectorAll('.placeholder').forEach(el => {
       el.addEventListener('dblclick', () => {
-        // select text for quick copy
         const range = document.createRange();
         range.selectNodeContents(el);
         window.getSelection().removeAllRanges();
