@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About Me — (Your name)</title>
+  <title>About Me — LogicForge</title>
 
-  <meta name="description" content="About the project author" />
-  <meta name="robots" content="noindex" />
+  <meta name="description" content="About LogicForge — creator of WatchDog. Background, skills, projects, and contact." />
+  <meta property="og:title" content="About Me — LogicForge" />
+  <meta property="og:description" content="Creator of WatchDog — building local, privacy-first system tooling." />
+  <meta name="twitter:card" content="summary" />
 
   <style>
     :root{
@@ -28,7 +30,7 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background:
         radial-gradient(800px 400px at 10% 10%, rgba(46,164,79,0.04), transparent 8%),
         linear-gradient(180deg, rgba(255,255,255,0.01), transparent 40%),
@@ -58,7 +60,8 @@
     }
 
     .profile{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
-    .avatar{width:160px;height:160px;border-radius:14px;background:linear-gradient(135deg,#1b7a3a,#2ea44f);display:grid;place-items:center;font-weight:700;font-size:32px;color:white;box-shadow:0 10px 30px rgba(46,164,79,0.08)}
+    .avatar{width:160px;height:160px;border-radius:14px;background:linear-gradient(135deg,#1b7a3a,#2ea44f);display:grid;place-items:center;font-weight:700;font-size:32px;color:white;box-shadow:0 10px 30px rgba(46,164,79,0.08);overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
     .name{font-size:20px;font-weight:700}
     .role{color:var(--muted);font-size:13px;margin-top:4px}
     .contact{width:100%;background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
@@ -75,9 +78,9 @@
     .feature h4{margin:0 0 6px 0}
     footer{margin-top:12px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
 
-    /* Visual cue for placeholders to edit */
-    .placeholder{border:2px dashed rgba(255,255,255,0.03);padding:8px;border-radius:6px}
-    .hint{color:var(--muted);font-size:13px;margin-top:6px}
+    /* small helper to make editing content inline easier */
+    .editable{outline:2px dashed transparent;padding:2px;border-radius:4px}
+    .editable:focus{outline-color:rgba(46,164,79,0.15)}
 
     @media (max-width:920px){
       main.card{grid-template-columns:1fr;align-items:stretch}
@@ -94,11 +97,10 @@
         <div class="logo">WD</div>
         <div>
           <div style="font-weight:700">WatchDog</div>
-          <div style="font-size:12px;color:var(--muted)">Creator profile (temporary)</div>
+          <div style="font-size:12px;color:var(--muted)">Creator profile</div>
         </div>
       </div>
 
-      <!-- Navigation: replace/insert this into other pages as needed -->
       <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="download.html">Download</a>
@@ -108,84 +110,63 @@
       </nav>
     </header>
 
-    <main class="card" role="main" aria-labelledby="aboutme-heading">
+    <main class="card" role="main" aria-labelledby="profile-heading">
       <aside class="profile" aria-hidden="false">
-        <!-- EDIT: replace the avatar DIV with an <img> if you have a picture (see comments below) -->
-         <div class="avatar"><img src="assets/avatar.png" alt="Logic Forge" style="width:100%;height:100%;object-fit:cover"></div>
+        <!-- Avatar: the page expects assets/avatar.png in site root; replace or remove as needed -->
+        <!-- If you don't have an avatar image, keep the initials markup below -->
+        <!-- To use an image: place assets/avatar.png and the <img> below will show it -->
+        <div class="avatar" id="avatar">
+          <img src="assets/avatar.png" alt="LogicForge avatar" loading="lazy" onerror="this.style.display='none'; this.parentNode.textContent='LF'">
+        </div>
 
-        <!-- EDIT: fill these fields -->
         <div>
-          <div class="name placeholder" id="name-placeholder">Lodgic Fordge</div>
-          <div class="role placeholder" id="role-placeholder">Software Engineer</div>
+          <div class="name">LogicForge</div>
+          <div class="role">Creator of WatchDog and other future projects</div>
 
           <div class="contact" style="margin-top:10px">
+            <div><a href="support.html">Contact via Support form</a></div>
+            <div class="muted" style="margin-top:6px">Prefer support form for bug reports and project questions.</div>
           </div>
         </div>
       </aside>
 
-      <section class="content">
-        <!-- EDIT: main title and short intro -->
-        <h1 id="aboutme-heading">[Headline — e.g. Creator of WatchDog]</h1>
-        <p id="lead" class="lead placeholder">[Short intro paragraph — 1–2 sentences]</p>
+      <section class="content" aria-labelledby="profile-heading">
+        <h1 id="profile-heading">About Me</h1>
 
-        <!-- Below: structured sections. Replace the placeholder text blocks. -->
-        <div class="section panel placeholder" id="section-core">
+        <p class="lead">
+          I prefer to keep my online and personal life private, so I remain anonymous. This may be my first published project, but it is by no means my first work — I’ve shipped and experimented with many projects before.
+        </p>
+
+        <div class="section panel">
           <h3>Core message</h3>
-          <p>[One-sentence core message — e.g. "I build local, privacy-preserving system tools."]</p>
+          <p>I build local tools that prioritize privacy, predictability, and low overhead.</p>
         </div>
 
-        <div class="section panel placeholder" id="section-skills">
+        <div class="section panel">
           <h3>Skills & focus</h3>
-          <p>[List your main skills or areas of focus]</p>
+          <p>Main focuses: Python, AI development. Hobbies: computer repair, PC gaming.</p>
         </div>
 
-        <div class="section panel placeholder" id="section-projects">
+        <div class="section panel">
           <h3>Selected projects</h3>
-          <p>[Short bullets or links to top projects — include WatchDog link]</p>
+          <p><strong>WatchDog</strong> — Local system assistant for discovery, intent control, and crash monitoring. More projects will come soon.</p>
+          <p class="muted" style="margin-top:8px">Repo: <a href="https://github.com/LogicFordge961/watchdog" target="_blank" rel="noopener">github.com/LogicFordge961/watchdog</a></p>
         </div>
 
-        <div class="section panel placeholder" id="section-contact">
+        <div class="section panel">
           <h3>How to reach me</h3>
-          <p>[Preferred contact methods: GitHub, email, support form]</p>
+          <p>Best: use the <a href="support.html">Support form</a>. For quick questions you may email: <strong>[your-email@example.com]</strong> — replace this placeholder in the file with your real address if you want it visible.</p>
         </div>
-
-        <!-- Optional: timeline or notes -->
-        <div class="section panel placeholder" id="section-notes">
-          <h3>Notes / Timeline</h3>
-          <p>[Optional: short timeline of milestones or releases]</p>
-        </div>
-
-        <p class="hint" style="margin-top:12px">All visible fields are simple HTML — open this file in your editor and replace the placeholder text between the tags. See the top of the file for CSS variables you can change for colors and font sizes.</p>
       </section>
     </main>
 
     <footer>
-      <div>© <strong>[Your Name]</strong></div>
+      <div>© <strong>LogicForge</strong></div>
       <div style="display:flex;gap:12px">
-        <a href="https://github.com/" style="color:var(--muted)">GitHub</a>
+        <a href="https://github.com/LogicFordge961" target="_blank" rel="noopener" style="color:var(--muted)">GitHub</a>
         <a href="support.html" style="color:var(--muted)">Support</a>
       </div>
     </footer>
   </div>
-
-  <!-- Quick instructions for use (not needed in production) -->
-  <script>
-    /* Instructions:
-       - Edit the placeholders by opening this file in your editor.
-       - To use a profile image: replace the #avatar-placeholder element with:
-         <div class="avatar"><img src="assets/avatar.png" alt="Your name" style="width:100%;height:100%;object-fit:cover"></div>
-         and add assets/avatar.png to your repo.
-       - To highlight the current nav item on other pages, add class="active" to the matching <a>.
-    */
-    // Make placeholder blocks selectable when double-clicking (preview convenience)
-    document.querySelectorAll('.placeholder').forEach(el => {
-      el.addEventListener('dblclick', () => {
-        const range = document.createRange();
-        range.selectNodeContents(el);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-      });
-    });
-  </script>
 </body>
 </html>
