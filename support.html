@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Support | WatchDog AI</title>
+  <title>Reach out | WatchDog</title>
+  <meta name="description" content="Reach out to LogicForge for questions, bug reports, or support." />
 
   <style>
     :root{
@@ -27,49 +28,26 @@
         linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%),
         var(--bg);
       color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       padding:48px 20px;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:24px;
-      flex-direction:column;
     }
 
     header{width:100%;max-width:var(--maxw);display:flex;justify-content:space-between;align-items:center;padding:0 8px}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{
-      width:48px;height:48px;border-radius:10px;
-      display:grid;place-items:center;background:linear-gradient(135deg,#1b7a3a,#2ea44f);
-      box-shadow:0 6px 18px rgba(46,164,79,0.08), inset 0 -6px 18px rgba(255,255,255,0.03);
-      color:white;font-weight:700;font-size:18px;
-    }
+    .logo{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#1b7a3a,#2ea44f);color:white;font-weight:700}
     .title{font-size:18px;font-weight:700}
     .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
 
-    .card{
-      width:100%;
-      max-width:var(--maxw);
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,0.04);
-      padding:26px;
-      box-shadow:0 10px 30px rgba(2,6,23,0.6);
-      backdrop-filter: blur(6px);
-    }
+    .card{width:100%;max-width:var(--maxw);background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-radius:var(--radius);border:1px solid rgba(255,255,255,0.04);padding:26px;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
 
     h1{margin:0 0 6px 0;font-size:20px}
     p.lead{margin:0 0 18px 0;color:var(--muted);font-size:13px}
 
     form{display:grid;gap:12px}
     label{display:block;font-size:13px;color:var(--muted); margin-bottom:6px}
-    .field{
-      position:relative;
-    }
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .full{grid-column:1 / -1}
-    input[type="text"], input[type="email"], textarea, select {
+    input, textarea, select {
       width:100%;
       padding:12px 14px;
       border-radius:10px;
@@ -78,271 +56,98 @@
       color:var(--text);
       font-size:14px;
       outline:none;
-      transition: box-shadow 160ms, border-color 160ms, transform 120ms;
     }
     textarea{min-height:120px;resize:vertical}
-    input:focus, textarea:focus, select:focus{
-      box-shadow:0 6px 16px rgba(46,164,79,0.08);
-      border-color: rgba(46,164,79,0.6);
-      transform:translateY(-1px);
-    }
+    input:focus, textarea:focus, select:focus{box-shadow:0 6px 16px rgba(46,164,79,0.08);border-color: rgba(46,164,79,0.6);}
 
+    .btn{background:linear-gradient(180deg,var(--accent), #1f7a3a);color:white;padding:12px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
     .helper{font-size:12px;color:var(--muted)}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      background:linear-gradient(180deg,var(--accent), #1f7a3a);
-      color:white;
-      padding:12px 16px;
-      border-radius:10px;
-      border:none;
-      cursor:pointer;
-      font-weight:700;
-      font-size:14px;
-      transition: transform 120ms, box-shadow 120ms, opacity 120ms;
-    }
-    .btn:active{transform:translateY(1px)}
-    .btn[disabled]{opacity:0.6;cursor:not-allowed}
-
-    .small{
-      display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:13px;color:var(--muted)
-    }
-
-    /* status / error */
-    .status{
-      margin-top:10px;
-      font-size:13px;
-      color:var(--muted);
-      min-height:20px;
-    }
+    .status{margin-top:10px;font-size:13px;color:var(--muted);min-height:20px}
     .status.error{color:var(--danger)}
     .status.success{color:var(--accent)}
 
-    /* success overlay */
-    .success-overlay{
-      position:fixed;inset:0;display:grid;place-items:center;
-      background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
-      z-index:40;backdrop-filter: blur(6px);
-      opacity:0;pointer-events:none;transition:opacity 240ms;
-    }
-    .success-overlay.show{opacity:1;pointer-events:auto}
-    .success-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      padding:28px;border-radius:16px;text-align:center;border:1px solid rgba(255,255,255,0.04);width:90%;max-width:420px;
-      box-shadow:0 20px 60px rgba(2,6,23,0.8)
-    }
-    .check{
-      width:88px;height:88px;border-radius:999px;display:grid;place-items:center;margin:0 auto 12px auto;
-      background:linear-gradient(135deg,#1b7a3a,#2ea44f);box-shadow:0 10px 30px rgba(46,164,79,0.12);
-    }
-    .check svg{filter:drop-shadow(0 6px 16px rgba(46,164,79,0.14))}
-    .success-card h2{margin:0 0 6px 0;font-size:18px}
-    .success-card p{margin:0;color:var(--muted);font-size:13px}
-
-    /* file input styling */
-    .file-row{display:flex;gap:12px;align-items:center}
-    .file-name{font-size:13px;color:var(--muted)}
-
-    /* Responsive */
-    @media (max-width:720px){
-      .row{grid-template-columns:1fr}
-      .card{padding:20px}
-    }
+    .hidden{display:none}
+    .small{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:13px;color:var(--muted)}
   </style>
 </head>
 <body>
   <header>
-    <div class="brand" aria-hidden="false">
-      <div class="logo" aria-hidden="true">WD</div>
+    <div class="brand">
+      <div class="logo">WD</div>
       <div>
-        <div class="title">WatchDog AI</div>
-        <div class="subtitle">Support — send feedback or bug reports</div>
+        <div class="title">WatchDog</div>
+        <div class="subtitle">Reach out</div>
       </div>
     </div>
     <nav aria-label="Main navigation" style="font-size:13px;color:var(--muted)">
       <a href="index.html" style="color:var(--muted);text-decoration:none;margin-right:12px">Home</a>
       <a href="download.html" style="color:var(--muted);text-decoration:none;margin-right:12px">Download</a>
-      <a href="support.html" style="color:var(--muted);text-decoration:none;margin-right:12px">Support</a>
+      <a href="support.html" style="color:var(--text);text-decoration:underline;margin-right:12px">Reach out</a>
       <a href="about.html" style="color:var(--muted);text-decoration:none">About</a>
+      <a href="about-me.html" style="color:var(--muted);text-decoration:none;margin-left:12px">About Me</a>
     </nav>
   </header>
 
-  <main class="card" role="main" aria-labelledby="support-heading">
-    <h1 id="support-heading">Contact Support</h1>
-    <p class="lead">Provide as much detail as possible — screenshots and app info help us diagnose faster.</p>
+  <main class="card" role="main" aria-labelledby="reach-heading">
+    <h1 id="reach-heading">Reach out</h1>
+    <p class="lead">Questions, bug reports, or collaboration ideas — send details below. For quick questions you can email: <strong>[your-email@example.com]</strong> (replace this placeholder with a real address if you wish).</p>
 
     <!-- Formspree endpoint: keep your working URL -->
-    <form id="my-form" action="https://formspree.io/f/mzdvoojb" method="POST" enctype="multipart/form-data" novalidate>
-      <!-- Honeypot for bots (leave this input hidden) -->
+    <form id="contact-form" action="https://formspree.io/f/mzdvoojb" method="POST" enctype="multipart/form-data" novalidate>
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-      <div class="row">
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name (optional)" autocomplete="name" />
-        </div>
+      <label for="email">Your email</label>
+      <input id="email" name="_replyto" type="email" placeholder="you@example.com" required autocomplete="email" />
 
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="_replyto" type="email" placeholder="you@example.com" required autocomplete="email" />
-        </div>
+      <label for="reason">Why are you contacting?</label>
+      <select id="reason" name="reason">
+        <option value="Question">Question</option>
+        <option value="Bug">Bug report</option>
+        <option value="Feature Request">Feature request</option>
+        <option value="Other">Other (please specify)</option>
+      </select>
+
+      <!-- shown only when Other is selected -->
+      <div id="reason-custom-row" class="hidden">
+        <label for="reason-custom">Please specify</label>
+        <input id="reason-custom" name="reason_custom" type="text" placeholder="Short reason (e.g., account question)" />
       </div>
 
-      <div class="field full">
-        <label for="subject">Subject / Header</label>
-        <input id="subject" name="subject" type="text" placeholder="Short summary (e.g. Crash on startup)" />
-        <div class="helper">A concise header helps route your issue faster.</div>
-      </div>
-
-      <div class="row">
-        <div class="field">
-          <label for="type">Type</label>
-          <select id="type" name="type">
-            <option value="Bug" selected>Bug</option>
-            <option value="Feature Request">Feature Request</option>
-            <option value="Question">Question</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="severity">Severity</label>
-          <select id="severity" name="severity">
-            <option value="Low">Low</option>
-            <option value="Medium" selected>Medium</option>
-            <option value="High">High</option>
-            <option value="Critical">Critical</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="field">
-          <label for="os">Operating system</label>
-          <select id="os" name="os">
-            <option>Windows</option>
-            <option>macOS</option>
-            <option>Linux</option>
-            <option>Android</option>
-            <option>iOS</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="version">App version</label>
-          <input id="version" name="version" type="text" placeholder="e.g. 1.2.3" />
-        </div>
-      </div>
-
-      <div class="field full">
-        <label for="message">Message / Steps to reproduce</label>
-        <textarea id="message" name="message" rows="6" placeholder="Steps to reproduce, expected vs actual behavior, logs..." required></textarea>
-      </div>
-
-      <div class="field full">
-        <label for="attachment">Attach screenshot (optional)</label>
-        <div class="file-row">
-          <input id="attachment" type="file" name="attachment" accept="image/*" />
-          <div id="file-name" class="file-name helper">No file chosen</div>
-        </div>
-        <div class="helper">Image attachments help a lot. Note: file attachments require Formspree plan support.</div>
-      </div>
+      <label for="message">Message / details</label>
+      <textarea id="message" name="message" rows="6" placeholder="Provide steps to reproduce, expected behavior, logs, screenshots links..." required></textarea>
 
       <div style="display:flex;gap:12px;align-items:center;margin-top:6px">
-        <button id="my-form-button" class="btn" type="submit" aria-live="polite">
-          <span id="btn-text">Send message</span>
-          <svg id="spinner" style="display:none" width="16" height="16" viewBox="0 0 50 50" aria-hidden="true">
-            <circle cx="25" cy="25" r="20" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="4" stroke-linecap="round" stroke-dasharray="31.4 31.4">
-              <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
-        </button>
-
-        <div class="small helper" style="align-self:center">We typically reply within 48 hours</div>
+        <button id="submit-btn" class="btn" type="submit">Send</button>
+        <div class="small helper">We'll typically reply within 48 hours</div>
       </div>
 
-      <div id="my-form-status" class="status" role="status" aria-live="polite"></div>
+      <div id="form-status" class="status" role="status" aria-live="polite"></div>
     </form>
   </main>
 
-  <!-- success overlay -->
-  <div id="success" class="success-overlay" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="success-card" role="document">
-      <div class="check" aria-hidden="true">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 6L9 17l-5-5"></path>
-        </svg>
-      </div>
-      <h2>Message sent</h2>
-      <p>Thanks! LogicForge received your message — we'll get back to you shortly.</p>
-    </div>
-  </div>
-
   <script>
-    const form = document.getElementById('my-form');
-    const statusEl = document.getElementById('my-form-status');
-    const btn = document.getElementById('my-form-button');
-    const spinner = document.getElementById('spinner');
-    const btnText = document.getElementById('btn-text');
-    const successOverlay = document.getElementById('success');
-    const attachment = document.getElementById('attachment');
-    const fileNameEl = document.getElementById('file-name');
+    const reason = document.getElementById('reason');
+    const customRow = document.getElementById('reason-custom-row');
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
 
-    function setSending(isSending){
-      btn.disabled = isSending;
-      spinner.style.display = isSending ? 'inline-block' : 'none';
-      btnText.textContent = isSending ? 'Sending...' : 'Send message';
-    }
-
-    function showSuccess(){
-      successOverlay.classList.add('show');
-      successOverlay.setAttribute('aria-hidden', 'false');
-      setTimeout(()=> {
-        successOverlay.classList.remove('show');
-        successOverlay.setAttribute('aria-hidden','true');
-      }, 4000);
-    }
-
-    // Show selected file name
-    attachment.addEventListener('change', () => {
-      if (attachment.files && attachment.files.length) {
-        fileNameEl.textContent = attachment.files[0].name;
+    reason.addEventListener('change', () => {
+      if (reason.value === 'Other') {
+        customRow.classList.remove('hidden');
+        document.getElementById('reason-custom').required = true;
       } else {
-        fileNameEl.textContent = 'No file chosen';
+        customRow.classList.add('hidden');
+        document.getElementById('reason-custom').required = false;
       }
     });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      submitBtn.disabled = true;
+      statusEl.textContent = 'Sending...';
       statusEl.className = 'status';
-      statusEl.textContent = '';
-      setSending(true);
-
-      // Honeypot check (bots often fill this)
-      const gotcha = form.querySelector('[name="_gotcha"]').value;
-      if (gotcha) {
-        // pretend it worked to the bot, but don't submit
-        setTimeout(()=> {
-          setSending(false);
-          statusEl.classList.add('success');
-          statusEl.textContent = 'Thanks — message sent.';
-        }, 600);
-        return;
-      }
-
-      // Minimal client-side validation
-      const email = form.querySelector('[name="_replyto"]').value.trim();
-      const message = form.querySelector('[name="message"]').value.trim();
-      if (!email || !message){
-        statusEl.classList.add('error');
-        statusEl.textContent = 'Please provide both an email address and a message.';
-        setSending(false);
-        return;
-      }
 
       const data = new FormData(form);
 
@@ -350,46 +155,29 @@
         const resp = await fetch(form.action, {
           method: 'POST',
           body: data,
-          // Don't set Content-Type — let the browser set the correct multipart/form-data boundary
           headers: { 'Accept': 'application/json' }
         });
 
         if (resp.ok) {
           statusEl.classList.add('success');
-          statusEl.textContent = 'Thanks — message sent.';
+          statusEl.textContent = 'Thanks — your message has been sent.';
           form.reset();
-          fileNameEl.textContent = 'No file chosen';
-          showSuccess();
-          setSending(false);
+          submitBtn.disabled = false;
           return;
         }
 
-        // Attempt to read JSON error or fallback to text
         let body;
         try { body = await resp.json(); } catch (err) { body = await resp.text(); }
 
         statusEl.classList.add('error');
-        if (body && typeof body === 'object') {
-          if (body.errors && body.errors.length) {
-            statusEl.textContent = body.errors.map(x => x.message || JSON.stringify(x)).join('; ');
-          } else if (body.error) {
-            statusEl.textContent = body.error;
-          } else {
-            statusEl.textContent = 'There was an error submitting the form.';
-          }
-        } else if (typeof body === 'string' && body.length) {
-          statusEl.textContent = body;
-        } else {
-          statusEl.textContent = 'There was an error submitting the form.';
-        }
-
+        statusEl.textContent = (body && body.error) ? body.error : 'There was a problem sending your message.';
         console.error('Formspree error', resp.status, body, resp.url);
       } catch (err) {
         statusEl.classList.add('error');
         statusEl.textContent = 'Network/CORS error — check your console.';
         console.error('Network error while sending form:', err);
       } finally {
-        setSending(false);
+        submitBtn.disabled = false;
       }
     });
   </script>
